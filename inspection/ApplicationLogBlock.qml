@@ -7,7 +7,7 @@ BlockBase {
     id: root
     width: 450*dp
     height: 300*dp
-    onWidthChanged: block.positionChanged()
+    onWidthChanged: if (block) block.positionChanged()
 
     StretchColumn {
         anchors.fill: parent
@@ -45,7 +45,7 @@ BlockBase {
 
                 Connections {
                     target: controller.logManager()
-                    onLogChanged: {
+                    function onLogChanged() {
                         logList.model = controller.logManager().getLog()
                     }
                 }

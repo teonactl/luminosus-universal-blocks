@@ -2,6 +2,7 @@
     <qresource prefix="/universal-blocks">
         <file>controls/SliderBlock.qml</file>
         <file>content/NotesBlock.qml</file>
+        <file>content/StyledTextBlock.qml</file>
         <file>content/ImageBlock.qml</file>
         <file>inspection/ApplicationLogBlock.qml</file>
         <file>inspection/DataInspectionBlock.qml</file>

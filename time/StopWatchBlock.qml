@@ -21,7 +21,7 @@ BlockBase {
 
             Connections {
                 target: block
-                onTimeStringChanged: timeText.text = block.getTimeString()
+                function onTimeStringChanged() { timeText.text = block.getTimeString() }
             }
 
             Timer {

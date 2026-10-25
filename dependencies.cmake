@@ -3,6 +3,7 @@ set(PROJECT_HEADERS
     ${PROJECT_HEADERS}
     universal-blocks/content/ImageBlock.h
     universal-blocks/content/NotesBlock.h
+    universal-blocks/content/StyledTextBlock.h
     universal-blocks/controls/SliderBlock.h
     universal-blocks/inspection/ApplicationLogBlock.h
     universal-blocks/inspection/DataInspectionBlock.h
@@ -18,6 +19,7 @@ set(PROJECT_SOURCES
     ${PROJECT_SOURCES}
     universal-blocks/content/ImageBlock.cpp
     universal-blocks/content/NotesBlock.cpp
+    universal-blocks/content/StyledTextBlock.cpp
     universal-blocks/controls/SliderBlock.cpp
     universal-blocks/inspection/ApplicationLogBlock.cpp
     universal-blocks/inspection/DataInspectionBlock.cpp
