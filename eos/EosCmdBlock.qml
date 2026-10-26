@@ -35,11 +35,11 @@ BlockBase {
                     text: controller.eosManager().getCmdText(block.userId)
                     Connections {
                         target: controller.eosManager()
-                        onCmdTextChanged: cmdTextLine.text = controller.eosManager().getCmdText(block.userId)
+                        function onCmdTextChanged() { cmdTextLine.text = controller.eosManager().getCmdText(block.userId) }
                     }
                     Connections {
                         target: block
-                        onUserIdChanged: cmdTextLine.text = controller.eosManager().getCmdText(block.userId)
+                        function onUserIdChanged() { cmdTextLine.text = controller.eosManager().getCmdText(block.userId) }
                     }
                 }
             }

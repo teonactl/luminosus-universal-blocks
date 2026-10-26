@@ -84,7 +84,7 @@ BlockBase {
 
                 Connections {
                     target: controller.lightingConsole()
-                    onLogChanged: {
+                    function onLogChanged() {
                         logList.model = controller.lightingConsole().getLog()
                     }
                 }

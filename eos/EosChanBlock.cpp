@@ -83,7 +83,7 @@ void EosChanBlock::forwardDataToOutput() {
         const ColorMatrix& input = m_inputNode->constData();
         auto out = HsvDataModifier(m_outputNode);
         if (input.width() < out.width + 1 || input.height() < out.height) {
-            qWarning() << "FixtureBlock forward: data too small";
+            qWarning() << "EosChanBlock forward: data too small";
             return;
         }
         for (int x = 0; x < out.width; ++x) {

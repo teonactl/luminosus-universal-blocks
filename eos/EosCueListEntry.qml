@@ -88,7 +88,7 @@ Rectangle {
                     width: 10*dp
                     height: 5*dp
                     anchors.centerIn: parent
-                    source: modelData.notes ? "qrc:/images/down_arrow_slim_blue.png" : "qrc:/images/down_arrow_slim.png"
+                    source: modelData.notes ? "qrc:/core/ui/images/down_arrow_slim_blue.png" : "qrc:/core/ui/images/down_arrow_slim.png"
                     rotation: notesVisible ? 0 : -90
                     Behavior on rotation {
                         NumberAnimation {
@@ -177,7 +177,7 @@ Rectangle {
                     width: 10*dp
                     height: 5*dp
                     anchors.centerIn: parent
-                    source: "qrc:/images/down_arrow_slim_blue.png"
+                    source: "qrc:/core/ui/images/down_arrow_slim_blue.png"
                     rotation: notesVisible ? 0 : -90
                     Behavior on rotation {
                         NumberAnimation {

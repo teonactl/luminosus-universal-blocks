@@ -34,19 +34,19 @@ BlockBase {
     // Case: cueListNumber in block changes:
     Connections {
         target: block
-        onCueListNumberChanged: updateCueList()
+        function onCueListNumberChanged() { updateCueList() }
     }
 
     // Case: cueLists in CueManager change:
     Connections {
         target: controller.cueListManager()
-        onCueListsChanged: updateCueList()
+        function onCueListsChanged() { updateCueList() }
     }
 
     // Case cues inside cueList change:
     Connections {
         target: cueList
-        onCuesChanged: {
+        function onCuesChanged() {
             updateCues()
             if (followCheckbox.active) scrollToActive()
         }
@@ -55,7 +55,7 @@ BlockBase {
     // Case active or pending cue info changes and follow mode is active:
     Connections {
         target: controller.eosManager()
-        onCueInfoChanged: if (followCheckbox.active) scrollToActive()
+        function onCueInfoChanged() { if (followCheckbox.active) scrollToActive() }
     }
 
     // get initial values at component creation:

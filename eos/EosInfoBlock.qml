@@ -49,11 +49,13 @@ BlockBase {
                     StretchText {
                         id: ipLabel
                         implicitWidth: -0.6
-                        text: "IP: " + controller.lightingConsole().getIpAddressString()
+                        text: "IP: " + (controller.lightingConsole().currentPreset.ip || "?")
                         hAlign: Text.AlignLeft
                         Connections {
                             target: controller.lightingConsole()
-                            onAddressChanged: ipLabel.text = "IP: " + controller.lightingConsole().getIpAddressString()
+                            function onCurrentPresetChanged() {
+                                ipLabel.text = "IP: " + (controller.lightingConsole().currentPreset.ip || "?")
+                            }
                         }
                     }
                     StretchText {
