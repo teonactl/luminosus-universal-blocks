@@ -5,6 +5,22 @@ set(PROJECT_HEADERS
     universal-blocks/content/NotesBlock.h
     universal-blocks/content/StyledTextBlock.h
     universal-blocks/controls/SliderBlock.h
+    universal-blocks/eos/EosChanBlock.h
+    universal-blocks/eos/EosCmdBlock.h
+    universal-blocks/eos/EosCueBlock.h
+    universal-blocks/eos/EosCueListBlock.h
+    universal-blocks/eos/EosEffectBlock.h
+    universal-blocks/eos/EosFaderBankBlock.h
+    universal-blocks/eos/EosGroupBlock.h
+    universal-blocks/eos/EosInfoBlock.h
+    universal-blocks/eos/EosKeyBlock.h
+    universal-blocks/eos/EosMacroBlock.h
+    universal-blocks/eos/EosMasterPlaybackBlock.h
+    universal-blocks/eos/EosOscMonitorBlock.h
+    universal-blocks/eos/EosSingleFaderBlock.h
+    universal-blocks/eos/EosSpeedMasterBlock.h
+    universal-blocks/eos/EosSubBlock.h
+    universal-blocks/eos/EosWheelsBlock.h
     universal-blocks/inspection/ApplicationLogBlock.h
     universal-blocks/inspection/DataInspectionBlock.h
     universal-blocks/inspection/GuiEditorBlock.h
@@ -21,6 +37,22 @@ set(PROJECT_SOURCES
     universal-blocks/content/NotesBlock.cpp
     universal-blocks/content/StyledTextBlock.cpp
     universal-blocks/controls/SliderBlock.cpp
+    universal-blocks/eos/EosChanBlock.cpp
+    universal-blocks/eos/EosCmdBlock.cpp
+    universal-blocks/eos/EosCueBlock.cpp
+    universal-blocks/eos/EosCueListBlock.cpp
+    universal-blocks/eos/EosEffectBlock.cpp
+    universal-blocks/eos/EosFaderBankBlock.cpp
+    universal-blocks/eos/EosGroupBlock.cpp
+    universal-blocks/eos/EosInfoBlock.cpp
+    universal-blocks/eos/EosKeyBlock.cpp
+    universal-blocks/eos/EosMacroBlock.cpp
+    universal-blocks/eos/EosMasterPlaybackBlock.cpp
+    universal-blocks/eos/EosOscMonitorBlock.cpp
+    universal-blocks/eos/EosSingleFaderBlock.cpp
+    universal-blocks/eos/EosSpeedMasterBlock.cpp
+    universal-blocks/eos/EosSubBlock.cpp
+    universal-blocks/eos/EosWheelsBlock.cpp
     universal-blocks/inspection/ApplicationLogBlock.cpp
     universal-blocks/inspection/DataInspectionBlock.cpp
     universal-blocks/inspection/GuiEditorBlock.cpp

@@ -1,0 +1,116 @@
+#ifndef EOSFADERBANKBLOCK_H
+#define EOSFADERBANKBLOCK_H
+
+#include <QDateTime>
+#include <QElapsedTimer>
+#include "core/block_basics/BlockBase.h"
+#include "core/eos/EosOSCMessage.h"
+#include "core/block_basics/OneOutputBlock.h"
+#include "core/helpers/utils.h"
+
+
+class EosFaderBankBlock: public OneOutputBlock
+{
+    Q_OBJECT
+
+    Q_PROPERTY(int page READ getPage WRITE setPageFromGui NOTIFY pageChanged)
+    Q_PROPERTY(QString bankLabel READ getBankLabel NOTIFY bankLabelChanged)
+    Q_PROPERTY(QList<QString> faderLabels READ getFaderLabels NOTIFY faderLabelsChanged)
+    Q_PROPERTY(QList<qreal> faderLevels READ getFaderLevels NOTIFY faderLevelsChanged)
+
+public:
+
+    static bool s_registered;
+
+    static BlockInfo info() {
+        static BlockInfo info;
+        info.typeName = "Eos Fader Bank";
+        info.nameInUi = "Fader Bank";
+        info.category << "ETC Consoles" << "Eos";
+        info.helpText = "A bank of N faders. N can be set in block settings\n\n"
+                        "'Catch external faders' option will prevent jumping "
+                        "when value gets not synchronized with fader (e.g. on page change)\n\n"
+                        "'Feedback enabled' option controls midi feedback for faders\n\n"
+                        "'Page button' in lower right corner can be mapped to any midi button. "
+                        "Holding the button down and pressing fader stop button jumps to page "
+                        "equal to fader index. With 10 faders you have quick access to 10 pages.\n\n"
+                        "Output node can be used to signal current page to another block.\n\n"
+                        "This block uses Eos OSC user 1.";
+        info.qmlFile = "qrc:/universal-blocks/eos/EosFaderBankBlock.qml";
+        info.complete<EosFaderBankBlock>();
+        return info;
+    }
+
+    explicit EosFaderBankBlock(CoreController* controller, QString uid);
+
+    virtual void getAdditionalState(QCborMap& state) const override;
+    virtual void setAdditionalState(const QCborMap& state) override;
+
+    // block needs to be rendered for MIDI mapping to work
+    virtual bool renderIfNotVisible() const override { return true; }
+
+signals:
+    void pageChanged();
+    void bankLabelChanged();
+    void faderLabelsChanged();
+    void faderLevelsChanged();
+
+public slots:
+    virtual BlockInfo getBlockInfo() const override { return info(); }
+
+    int getPage() const { return m_page; }
+    void setPageFromGui(int value);
+
+    QString getBankLabel() const { return m_bankLabel; }
+    void setBankLabel(QString value) { m_bankLabel = value; emit bankLabelChanged(); }
+
+    QList<QString> getFaderLabels() const { return m_faderLabels; }
+    void setFaderLabelFromOsc(int faderIndex, QString label);
+
+    QList<qreal> getFaderLevels() const { return m_faderLevels; }
+    void setFaderLevel(int faderIndex, qreal value);
+    void setFaderLevelFromGui(int faderIndex, qreal value);
+    void setFaderLevelFromExt(int faderIndex, qreal value);
+    void setFaderLevelFromOsc(int faderIndex, qreal value);
+
+    void sendLoadEvent(int faderIndex, bool value);
+    void sendUnloadEvent(int faderIndex);
+    void sendStopEvent(int faderIndex, bool value);
+    void sendFireEvent(int faderIndex, bool value);
+
+    void sendPageMinusEvent();
+    void sendPagePlusEvent();
+
+    void updateFaderCount();
+
+protected slots:
+    void onEosConnectionEstablished();
+    void sendConfigMessage();
+    void onIncomingEosMessage(const EosOSCMessage& msg);
+    void onConnectionReset();
+
+private:
+    int getMaxFaderPage();
+
+protected:
+    const QString m_bankIndex;
+
+    int m_page;
+    QString m_bankLabel;
+
+    IntegerAttribute m_numFaders;
+
+    QVector<QString> m_faderLabels;
+    QVector<qreal> m_faderLevels;
+    QVector<qreal> m_externalLevels;
+    QVector<bool> m_externalLevelsValid;
+    QVector<bool> m_faderSync;
+    QVector<bool> m_feedbackInvalid;
+
+    BoolAttribute m_catchFaders;
+    BoolAttribute m_pageChangeMode;
+    QElapsedTimer m_lastExtTime;
+    BoolAttribute m_feedbackEnabled;
+};
+
+#endif // EOSFADERBANKBLOCK_H

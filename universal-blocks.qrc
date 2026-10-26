@@ -1,6 +1,24 @@
 <RCC>
     <qresource prefix="/universal-blocks">
         <file>controls/SliderBlock.qml</file>
+        <file>eos/EosCueListEntry.qml</file>
+        <file>eos/EosFaderItem.qml</file>
+        <file>eos/EosChanBlock.qml</file>
+        <file>eos/EosCmdBlock.qml</file>
+        <file>eos/EosCueBlock.qml</file>
+        <file>eos/EosCueListBlock.qml</file>
+        <file>eos/EosEffectBlock.qml</file>
+        <file>eos/EosFaderBankBlock.qml</file>
+        <file>eos/EosGroupBlock.qml</file>
+        <file>eos/EosInfoBlock.qml</file>
+        <file>eos/EosKeyBlock.qml</file>
+        <file>eos/EosMacroBlock.qml</file>
+        <file>eos/EosMasterPlaybackBlock.qml</file>
+        <file>eos/EosOscMonitorBlock.qml</file>
+        <file>eos/EosSingleFaderBlock.qml</file>
+        <file>eos/EosSpeedMasterBlock.qml</file>
+        <file>eos/EosSubBlock.qml</file>
+        <file>eos/EosWheelsBlock.qml</file>
         <file>content/NotesBlock.qml</file>
         <file>content/StyledTextBlock.qml</file>
         <file>content/ImageBlock.qml</file>
